@@ -8,7 +8,7 @@ class MatakuliahController extends Controller
      */
     public function index()
     {
-        return "Menampilkan data matakuliah";
+        return "Menampilkan data inpormasi matakuliah";
     }
 
     /**
