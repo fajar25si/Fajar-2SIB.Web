@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MahasiswaController;
 
+use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\MatakuliahController;
 
@@ -49,4 +50,6 @@ Route::get('/nama/{param1}', function ($param1) {
         return 'Nama saya: '.$param1;
 });
 
+
+Route::get('/home', [HomeController::class, 'index']);
 Route::get('/mahasiswa/{param1}', [App\Http\Controllers\MahasiswaController::class, 'show']);
