@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'RobotoSlab-Bold';
+    src: url('../fonts/RobotoSlab-Bold.ttf');
+}
+
+.font-custom{
+    font-family: 'RobotoSlab-Bold';
+}
