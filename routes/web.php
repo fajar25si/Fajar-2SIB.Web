@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\QuestionController;
 use App\Http\controllers\DashboardController;
+use App\Http\controllers\PelangganController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/matakuliah/index', [MatakuliahController::class, 'index']);
@@ -13,6 +14,9 @@ Route::get('/matakuliah/show/{id?}', [MatakuliahController::class, 'show']);
 Route::get('/matakuliah/edit/{id}', [MatakuliahController::class, 'edit']);
 Route::get('/matakuliah/update/{id}', [MatakuliahController::class, 'update']);
 Route::get('/matakuliah/delate/{id}', [MatakuliahController::class, 'destroy']);
+
+//
+Route::resource('pelanggan', PelangganController::class);
 
 Route::get('/', function () {
     return view('welcome');
