@@ -22,14 +22,18 @@
     @include('layout.admin.css')
 
 </head>
-
 <body>
-    {{-- start header --}}
-    @include('layout.admin.header')
-    {{-- end header --}}
+    {{-- start sidebar --}}
+    @include('layout.admin.sidebar')
+    {{-- end sidebar --}}
 
-    {{-- start content --}}
-    @yield('content')
+     {{-- start content --}}
+    <main class="content">
+
+        @include('layout.admin.header')
+    
+        @yield('content')
+    </main>
     {{-- -end content --}}
 
     {{-- -start footer --}}
@@ -42,5 +46,4 @@
     {{-- -end js --}}
 
 </body>
-
 </html>
