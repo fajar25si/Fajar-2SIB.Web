@@ -12,7 +12,7 @@ class UserController extends Controller
     // Menampilkan seluruh data User
     public function index()
     {
-        $data['dataUser'] = User::all();
+        $data['dataUser'] = User::paginate(10)->onEachSide(15);
 
         return view('admin.user.index', $data);
     }

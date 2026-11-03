@@ -42,6 +42,7 @@
                             <table id="table-pelanggan" class="table table-centered table-nowrap mb-0 rounded">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th class="border-0 rounded-start">No</th>
                                         <th class="border-0">First Name</th>
                                         <th class="border-0">Last Name</th>
                                         <th class="border-0">Birthday</th>
@@ -51,15 +52,20 @@
                                         <th class="border-0 rounded-end">Action</th>
                                     </tr>
                                 </thead>
+                                 @php
+                                    $i=0;
+                                 @endphp
                                 <tbody>
                                     @foreach($dataPelanggan as $item)
                                         <tr>
+                                            <td>{{($dataPelanggan->currentPage() - 1) * $dataPelanggan->perPage() + $loop->iteration}}</td>
                                             <td>{{ $item->first_name }}</td>
                                             <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->birthday }}</td>
                                             <td>{{ $item->gender }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->phone }}</td>
+                                            
                                             <td><a href="{{ route('pelanggan.edit', $item->pelanggan_id) }}"
                                                     class="btn btn-info btn-sm">
                                                     <svg class="icon icon-xs me-2" data-slot="icon" fill="none"
@@ -92,6 +98,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
+                            <div class="mt-3">
+                                {{ $dataPelanggan->links('pagination::bootstrap-5') }}
+                            </div>
+
                         </div>
                     </div>
                 </div>

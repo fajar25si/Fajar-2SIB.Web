@@ -48,11 +48,15 @@
                         </thead>
 
                         <tbody>
+                                @php
+                                    $i = 0;
+                                @endphp
                             @forelse ($dataUser as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{($dataUser->currentPage() - 1) * $dataUser->perPage() + $loop->iteration}}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
+                                    <td>{{ $item->password }}</td>
                                     <td>
                                         <a href="{{ route('user.edit', $item->id) }}"
                                            class="btn btn-primary btn-sm">
@@ -82,8 +86,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                <div class="mt-3">
+                                {{ $dataUser->links('pagination::bootstrap-5') }}
                 </div>
-            </div>
         </div>
     </div>
 </div>

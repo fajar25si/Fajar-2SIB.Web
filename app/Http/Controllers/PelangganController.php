@@ -12,7 +12,7 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $data['dataPelanggan'] = Pelanggan::all();
+        $data['dataPelanggan'] = Pelanggan::paginate(10)->onEachSide(15);
         return view('admin.pelanggan.index', $data);
     }
 
