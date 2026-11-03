@@ -10,10 +10,21 @@ class PelangganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataPelanggan'] = Pelanggan::paginate(10)->onEachSide(15);
+        //Daftar kolom yyang bisa di filter sesuai nama pada from
+        $filterableColumns = ['gender'];
+
+        $seacrhableColumns = ['first_name', 'last_name', 'email', 'phone'];
+
+        //Gunakan scope filter untuk memproses query
+        $data['dataPelanggan'] = Pelanggan::filter($request, $filterableColumns)
+        ->search($request, $seacrhableColumns)->paginate(10)
+        ->onEachSide(15)->withQueryString();
+
         return view('admin.pelanggan.index', $data);
+    
+        
     }
 
     /**
