@@ -13,10 +13,10 @@ class UserController extends Controller
     public function index()
     {
 
-        if (!auth()->check()) {
+        if (!Auth()->check()) {
             return redirect()
             ->route('login')
-            ->withError('Silahkan anda harus login terlebih dahulu.');
+            ->withErrors('Silahkan anda harus login terlebih dahulu.');
         }
         $data['dataUser'] = User::paginate(10)->onEachSide(15);
 
@@ -36,9 +36,11 @@ class UserController extends Controller
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed',
+            'role' => 'required|in:Super Admin,Pelanggan,Mitra',
         ]);
 
         $data['password'] = Hash::make($request->password);
+        $data['role'] = $request->role;
 
         User::create($data);
 
