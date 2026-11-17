@@ -12,6 +12,12 @@ class PelangganController extends Controller
      */
     public function index(Request $request)
     {
+
+        if (!auth()->check()) {
+            return redirect()
+            ->route('login')
+            ->withError('Silahkan anda harus login terlebih dahulu.');
+        }
         //Daftar kolom yyang bisa di filter sesuai nama pada from
         $filterableColumns = ['gender'];
 

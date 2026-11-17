@@ -7,6 +7,7 @@ use App\Http\controllers\PelangganController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/matakuliah/index', [MatakuliahController::class, 'index']);
 Route::get('/matakuliah/create', [MatakuliahController::class, 'create']);
@@ -71,6 +72,14 @@ Route::get('/user', [UserController::class, 'index']);
 Route::prefix('admin')->group(function () {
     Route::resource('user', UserController::class);
 });
+
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth')
+    ->name('auth.logout');
+
 
 
 
